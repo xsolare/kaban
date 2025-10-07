@@ -29,6 +29,10 @@ function onMouseMove() {
   transformStyle.value = `perspective(${perspective}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`
 }
 
+function goToBoards() {
+  router.push(AppRoutePaths.Boards.List)
+}
+
 function onMouseEnter() {
   isHovering.value = true
 }
@@ -60,7 +64,7 @@ function onMouseLeave() {
         <p class="subtitle">
           Работа не волк
         </p>
-        <KitBtn class="btn">
+        <KitBtn class="btn" @click="goToBoards">
           <Icon icon="mdi:compass-rose" />
           <span>Начать</span>
         </KitBtn>
