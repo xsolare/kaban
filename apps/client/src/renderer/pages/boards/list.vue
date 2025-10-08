@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BoardsList } from '~/components/05.modules/boards-list'
+import { BoardsList } from '~/components/05.modules/boards-hub'
 </script>
 
 <template>

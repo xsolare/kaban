@@ -1,4 +1,4 @@
-import type { IBoardListItem } from '../models/types'
+import type { IBoardHubItem } from '../models/types'
 
 export const MOCK_DATA = [
   {
@@ -21,4 +21,4 @@ export const MOCK_DATA = [
     title: 'test',
     link: '/boards/4',
   },
-] satisfies IBoardListItem[]
+] satisfies IBoardHubItem[]
