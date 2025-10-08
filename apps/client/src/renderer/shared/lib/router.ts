@@ -6,13 +6,26 @@ import { useAuthStore } from '~/shared/store/auth.store'
 // --- Компоненты страниц ---
 const Root = () => import('~/pages/root.vue')
 
+// -- Доски --
+const BoardsList = () => import('~/pages/boards/list.vue')
+const BoardsInfo = () => import('~/pages/boards/[id]/index.vue')
+
 const routes: RouteRecordRaw[] = [
   {
     path: AppRoutePaths.Root,
     name: AppRouteNames.Root,
     component: Root,
   },
-
+  {
+    path: AppRoutePaths.Boards.List,
+    name: AppRouteNames.BoardsList,
+    component: BoardsList,
+  },
+  {
+    path: AppRoutePaths.Boards.Info(':id'),
+    name: AppRouteNames.BoardsInfo,
+    component: BoardsInfo,
+  },
 ]
 
 const router: Router = createRouter({
