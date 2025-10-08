@@ -5,7 +5,7 @@ import router from '~/shared/lib/router'
 
 // @ts-expect-error бред какой то
 import application from './app.vue'
-import { requestPlugin } from './plugins/request'
+// import { requestPlugin } from './plugins/request'
 import { restoreSession } from './plugins/session-restore'
 import { themePlugin } from './plugins/theme'
 
