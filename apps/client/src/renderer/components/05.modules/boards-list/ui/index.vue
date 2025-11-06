@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { MOCK_DATA } from '../mock'
-import BoardHubItem from './board-hub-item.vue'
+import BoardListItem from './boards-list-item.vue'
 </script>
 
 <template>
   <div class="boards-list-container">
     <h1>Доски</h1>
     <section class="wrapper">
-      <BoardHubItem v-for="item in MOCK_DATA" :key="item.id" :="item" />
+      <BoardListItem v-for="item in MOCK_DATA" :key="item.id" :="item" />
     </section>
   </div>
 </template>
 
 <style scoped lang="scss">
-.boards-hub-container {
+.boards-list-container {
   display: flex;
   flex-direction: column;
   gap: 25px;

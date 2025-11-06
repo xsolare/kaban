@@ -1,4 +1,4 @@
-export interface IBoardHubItem {
+export interface IBoardListItem {
   id: string
   title: string
   link: string
