@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { IBoardHubItem } from '../models/types'
+import type { IBoardListItem } from '../models/types'
 
-type Props = IBoardHubItem
+type Props = IBoardListItem
 
 const props = defineProps<Props>()
 
@@ -11,13 +11,13 @@ function handleGoTo() {
 </script>
 
 <template>
-  <div class="board-hub-item" @click="handleGoTo">
+  <div class="board-list-item" @click="handleGoTo">
     <h3>{{ title }}</h3>
   </div>
 </template>
 
 <style scoped lang="scss">
-.board-hub-item {
+.board-list-item {
   display: flex;
   align-items: flex-start;
   padding: 15px;
