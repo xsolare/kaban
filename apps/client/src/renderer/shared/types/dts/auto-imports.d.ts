@@ -185,6 +185,7 @@ declare global {
   const useDisplay: typeof import('../../composables/use-display')['useDisplay']
   const useDisplayMedia: typeof import('@vueuse/core')['useDisplayMedia']
   const useDocumentVisibility: typeof import('@vueuse/core')['useDocumentVisibility']
+  const useDragAndDrop: typeof import('../../composables/use-drag-and-drop')['useDragAndDrop']
   const useDraggable: typeof import('@vueuse/core')['useDraggable']
   const useDropZone: typeof import('@vueuse/core')['useDropZone']
   const useElementBounding: typeof import('@vueuse/core')['useElementBounding']
@@ -518,6 +519,7 @@ declare module 'vue' {
     readonly useDisplay: UnwrapRef<typeof import('../../composables/use-display')['useDisplay']>
     readonly useDisplayMedia: UnwrapRef<typeof import('@vueuse/core')['useDisplayMedia']>
     readonly useDocumentVisibility: UnwrapRef<typeof import('@vueuse/core')['useDocumentVisibility']>
+    readonly useDragAndDrop: UnwrapRef<typeof import('../../composables/use-drag-and-drop')['useDragAndDrop']>
     readonly useDraggable: UnwrapRef<typeof import('@vueuse/core')['useDraggable']>
     readonly useDropZone: UnwrapRef<typeof import('@vueuse/core')['useDropZone']>
     readonly useElementBounding: UnwrapRef<typeof import('@vueuse/core')['useElementBounding']>

@@ -195,6 +195,7 @@
     "useDisplay": true,
     "useDisplayMedia": true,
     "useDocumentVisibility": true,
+    "useDragAndDrop": true,
     "useDraggable": true,
     "useDropZone": true,
     "useElementBounding": true,
