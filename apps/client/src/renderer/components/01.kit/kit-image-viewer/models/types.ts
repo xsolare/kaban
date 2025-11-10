@@ -1,6 +1,4 @@
-import type { ImageMetadata } from '~/shared/types/models/image'
-
-export interface IImageViewerImageMeta extends ImageMetadata {
+export interface IImageViewerImageMeta {
   latitude?: number | null
   longitude?: number | null
   takenAt?: string | null // ISO string
