@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { IColumn, ITask } from '../models/types'
+import { CreateNewColumnDialog } from '~/components/02.shared/create-new-column-dialog/'
 import { useDragAndDrop } from '~/shared/composables/use-drag-and-drop'
 
 interface Props {
@@ -11,6 +12,14 @@ const props = defineProps<Props>()
 
 const tasks = ref(new Map<string, ITask>(props.tasks))
 const columns = ref<IColumn[]>(props.columns)
+const isNewColumnDialogOpen = ref<boolean>(false)
+const newColumnTitle = ref<string>('')
+
+function handleCreate() {
+  // eslint-disable-next-line no-console
+  console.log('on creating new column >>> ', newColumnTitle.value)
+  isNewColumnDialogOpen.value = false
+}
 
 function handleDrop(payload: {
   itemId: string
@@ -69,11 +78,12 @@ const {
       </div>
     </div>
     <div class="add-column-container">
-      <button class="add-column-btn">
+      <button class="add-column-btn" @click="isNewColumnDialogOpen = true">
         + Добавить колонку
       </button>
     </div>
   </div>
+  <CreateNewColumnDialog v-model:visible="isNewColumnDialogOpen" v-model:title="newColumnTitle" @create="handleCreate" />
 </template>
 
 <style scoped>

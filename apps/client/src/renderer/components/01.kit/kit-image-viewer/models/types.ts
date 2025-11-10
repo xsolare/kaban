@@ -1,4 +1,4 @@
-import type { ImageMetadata } from '~/shared/types/models/trip'
+import type { ImageMetadata } from '~/shared/types/models/image'
 
 export interface IImageViewerImageMeta extends ImageMetadata {
   latitude?: number | null
