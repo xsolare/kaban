@@ -76,7 +76,7 @@ export const useAuthStore = defineStore('auth', {
       return useRequest({
         key: EAuthRequestKeys.REFRESH,
         fn: db => db.auth.refresh(refreshToken),
-        onSuccess: (data) => {
+        onSuccess: (data: any) => {
           this.saveTokens(data.token)
         },
         onError: (error) => {
@@ -110,7 +110,7 @@ export const useAuthStore = defineStore('auth', {
       return useRequest({
         key: EAuthRequestKeys.SIGN_IN,
         fn: db => db.auth.signIn(payload),
-        onSuccess: (data) => {
+        onSuccess: (data: any) => {
           this.user = data.user
           this.saveTokens(data.token)
         },
@@ -141,7 +141,7 @@ export const useAuthStore = defineStore('auth', {
       return useRequest({
         key: EAuthRequestKeys.VERIFY_EMAIL,
         fn: db => db.auth.verifyEmail(payload),
-        onSuccess: (data) => {
+        onSuccess: (data: any) => {
           this.user = data.user
           this.saveTokens(data.token)
         },

@@ -4,7 +4,6 @@ import { Icon } from '@iconify/vue'
 import { onClickOutside, toRef } from '@vueuse/core'
 import { resolveApiUrl } from '~/shared/lib/url'
 import { useImageViewerTransform, useSwipeNavigation } from '../composables'
-import ImageMetadataPanel from './kit-image-metadata-panel.vue'
 import KitViewerControls from './kit-viewer-controls.vue'
 
 interface Props {
@@ -353,12 +352,6 @@ onUnmounted(() => {
             </div>
           </div>
         </div>
-        <ImageMetadataPanel
-          v-if="currentImageMeta"
-          :meta="currentImageMeta"
-          :visible="isMetadataPanelVisible"
-          @close="isMetadataPanelVisible = false"
-        />
       </div>
     </Transition>
   </Teleport>

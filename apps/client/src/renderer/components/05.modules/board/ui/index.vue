@@ -5,7 +5,9 @@ import Board from './board.vue'
 
 <template>
   <div class="board-container">
-    <h1>Название доски</h1>
+    <div class="board-header">
+      <h1>Название доски</h1>
+    </div>
     <Board :columns="COLUMNS" :tasks="TASKS" />
   </div>
 </template>
