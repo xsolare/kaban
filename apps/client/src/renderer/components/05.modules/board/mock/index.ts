@@ -1,14 +1,71 @@
 import type { IColumn, ITask } from '../models/types'
+import { v4 as uuidv4 } from 'uuid'
 
 export const TASKS = [
-  ['task1', { title: 'Задача 1' }],
-  ['task2', { title: 'Задача 2' }],
-  ['task3', { title: 'Задача 3' }],
+  ['task1', {
+    id: uuidv4(),
+    projectId: 'KBN-1',
+    title: 'Задача 1',
+    author: {
+      id: uuidv4(),
+      name: 'Корнилов Иван Алексеевич',
+      avatar: '',
+    },
+    epic: {
+      id: uuidv4(),
+      color: '#3574F0',
+      name: 'task 1 epic',
+    },
+    priority: {
+      id: uuidv4(),
+      color: '#FF0000',
+      name: 'Критическая',
+    },
+  }],
+  ['task2', {
+    id: uuidv4(),
+    projectId: 'KBN-2',
+    title: 'Задача 2',
+    author: {
+      id: uuidv4(),
+      name: 'Жуков Даниил Романович',
+      avatar: '',
+    },
+    epic: {
+      id: uuidv4(),
+      color: '#FED277',
+      name: 'task 2 epic',
+    },
+    priority: {
+      id: uuidv4(),
+      color: '#00FF00',
+      name: 'Обычная',
+    },
+  }],
+  ['task3', {
+    id: uuidv4(),
+    projectId: 'KBN-3',
+    title: 'Задача 3',
+    author: {
+      id: uuidv4(),
+      name: 'Прытков Максим Алексеевич',
+      avatar: '',
+    },
+    epic: {
+      id: uuidv4(),
+      color: '#89C398',
+      name: 'Task 3 epic',
+    },
+    priority: {
+      id: uuidv4(),
+      color: '#FFFF00',
+      name: 'Важная',
+    },
+  }],
 ] satisfies [string, ITask][]
 
 export const COLUMNS = [
-  { id: 'backlog', title: 'Sprint Backlog', taskIds: [] },
-  { id: 'todo', title: 'To Do', taskIds: ['task1'] },
-  { id: 'progress', title: 'In Progress', taskIds: ['task2'] },
-  { id: 'done', title: 'Done', taskIds: ['task3'] },
+  { id: 'backlog', title: '🚧 Sprint Backlog', taskIds: ['task1'] },
+  { id: 'progress', title: '🎱 In Progress', taskIds: ['task2'] },
+  { id: 'done', title: '✅ Done', taskIds: ['task3'] },
 ] satisfies IColumn[]

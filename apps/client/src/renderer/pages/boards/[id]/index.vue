@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Board } from '~/components/05.modules/board'
+import Content from '~/components/05.modules/board/board.content.vue'
 </script>
 
 <template>
   <section class="wrapper">
-    <Board />
+    <Content />
   </section>
 </template>
 

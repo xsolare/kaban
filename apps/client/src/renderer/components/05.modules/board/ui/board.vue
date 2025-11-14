@@ -2,6 +2,7 @@
 import type { IColumn, ITask } from '../models/types'
 import { CreateNewColumnDialog } from '~/components/02.shared/create-new-column-dialog/'
 import { useDragAndDrop } from '~/shared/composables/use-drag-and-drop'
+import Task from './task.vue'
 
 interface Props {
   tasks: [string, ITask][]
@@ -10,6 +11,7 @@ interface Props {
 
 const props = defineProps<Props>()
 
+// eslint-disable-next-line unused-imports/no-unused-vars
 const tasks = ref(new Map<string, ITask>(props.tasks))
 const columns = ref<IColumn[]>(props.columns)
 const isNewColumnDialogOpen = ref<boolean>(false)
@@ -53,102 +55,125 @@ const {
 </script>
 
 <template>
-  <div class="board">
-    <div
-      v-for="column in columns"
-      :key="column.id"
-      class="column"
-      @dragover="onDragOver"
-      @dragenter="onDragEnter"
-      @dragleave="onDragLeave"
-      @drop="onDrop($event, column.id)"
-    >
-      <h3>{{ column.title }}</h3>
-      <div class="column-body">
-        <div
-          v-for="taskId in column.taskIds"
-          :key="taskId"
-          class="task"
-          draggable="true"
-          @dragstart="startDrag($event, taskId, column.id)"
-          @dragend="endDrag"
-        >
-          {{ tasks.get(taskId)?.title }}
+  <div class="board-wrapper">
+    <div class="column-headers">
+      <div
+        v-for="column in columns"
+        :key="column.id"
+        class="column-header-item"
+      >
+        {{ column.title }}
+      </div>
+      <div class="add-column-placeholder" />
+    </div>
+
+    <div class="board-content">
+      <div
+        v-for="column in columns"
+        :key="column.id"
+        class="column"
+        @dragover="onDragOver"
+        @dragenter="onDragEnter"
+        @dragleave="onDragLeave"
+        @drop="onDrop($event, column.id)"
+      >
+        <div class="column-body">
+          <Task
+            v-for="taskId in column.taskIds"
+            :key="taskId"
+            draggable="true"
+            :="tasks.get(taskId)!"
+            @dragstart="startDrag($event, taskId, column.id)"
+            @dragend="endDrag"
+          />
         </div>
       </div>
-    </div>
-    <div class="add-column-container">
-      <button class="add-column-btn" @click="isNewColumnDialogOpen = true">
-        + Добавить колонку
-      </button>
+
+      <div class="add-column-container" @click="isNewColumnDialogOpen = true">
+        <button class="add-column-btn">
+          + Добавить колонку
+        </button>
+      </div>
     </div>
   </div>
-  <CreateNewColumnDialog v-model:visible="isNewColumnDialogOpen" v-model:title="newColumnTitle" @create="handleCreate" />
+
+  <CreateNewColumnDialog
+    v-model:visible="isNewColumnDialogOpen"
+    v-model:title="newColumnTitle"
+    @create="handleCreate"
+  />
 </template>
 
-<style scoped>
-.board {
+<style scoped lang="scss">
+.board-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: auto;
+}
+
+.column-headers {
   display: flex;
   gap: 16px;
-  height: calc(100% - 100px);
-  overflow-x: auto;
-  padding-bottom: 16px;
-}
-
-.column {
-  background: var(--bg-overlay-primary-color);
   padding: 12px;
-  border-radius: 8px;
-  min-width: 280px;
-  max-width: 280px;
-  display: flex;
-  flex-direction: column;
-  transition: background-color 0.2s ease;
-}
-
-.column h3 {
-  font-weight: 600;
-  padding: 0 4px 12px;
-  color: var(--fg-primary-color);
-}
-
-.column-body {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.column.is-dragover {
-  background-color: var(--bg-accent-overlay-color);
-}
-
-.task {
   background: var(--bg-primary-color);
-  padding: 12px;
-  border-radius: 6px;
-  box-shadow: var(--s-s);
-  cursor: grab;
-  color: var(--fg-secondary-color);
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding-bottom: 12px;
+
+  .column-header-item {
+    min-width: 280px;
+    max-width: 280px;
+    font-weight: 600;
+    color: var(--fg-primary-color);
+    padding: 0 4px;
+  }
+
+  .add-column-placeholder {
+    width: 280px;
+    visibility: hidden;
+  }
 }
 
-.task:active {
-  cursor: grabbing;
-}
+.board-content {
+  display: flex;
+  gap: 16px;
+  padding: 0 12px 16px;
+  flex: 1;
 
-.task.is-dragging {
-  opacity: 0.4;
-  transform: rotate(1deg) scale(1.05);
-  box-shadow: var(--s-xl);
-}
+  .column {
+    background: var(--bg-overlay-primary-color);
+    padding: 12px;
+    border-radius: 8px;
+    min-width: 280px;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
 
-:deep(.task-placeholder) {
-  background: transparent;
-  border: 2px dashed var(--border-accent-color);
-  border-radius: 6px;
+    .column-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  .add-column-container {
+    min-width: 280px;
+    max-width: 280px;
+    align-self: flex-start;
+    padding-top: 12px;
+    height: 100%;
+    padding: 12px;
+    border: 2px dashed var(--bg-overlay-primary-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border: 2px dashed var(--border-accent-color);
+    }
+  }
 }
 </style>

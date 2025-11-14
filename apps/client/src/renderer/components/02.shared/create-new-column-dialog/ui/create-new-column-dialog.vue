@@ -27,6 +27,9 @@ const title = defineModel<string>('title', { required: true })
       placeholder="Введите название"
       size="sm"
     />
+    <p class="hint">
+      минимум 4 символа
+    </p>
     <div class="buttons">
       <KitBtn variant="outlined" @click="emit('update:visible', false)">
         Отменить
@@ -44,5 +47,11 @@ const title = defineModel<string>('title', { required: true })
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.hint {
+  font-size: smaller;
+  margin: 0;
+  color: var(--fg-secondary-color);
 }
 </style>
