@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { COLUMNS, TASKS } from '../mock'
-import Board from './board.vue'
+import { COLUMNS, TASKS } from './mock'
+import Board from './ui/board.vue'
 </script>
 
 <template>

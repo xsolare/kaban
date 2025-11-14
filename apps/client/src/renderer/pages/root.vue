@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { WelcomeCard } from '~/components/05.modules/welcome-card'
+import WelcomeCard from '~/components/05.modules/welcome-card/welcome-card.content.vue'
 </script>
 
 <template>

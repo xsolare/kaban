@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { MOCK_DATA } from '../mock'
-import BoardListItem from './boards-list-item.vue'
+import { MOCK_DATA } from './mock'
+import BoardListItem from './ui/boards-list-item.vue'
 </script>
 
 <template>
