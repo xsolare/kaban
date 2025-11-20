@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { IColumn, ITask } from '../models/types'
-import { CreateNewColumnDialog } from '~/components/02.shared/create-new-column-dialog/'
 import { useDragAndDrop } from '~/shared/composables/use-drag-and-drop'
 import Task from './task.vue'
 
@@ -11,16 +10,18 @@ interface Props {
 
 const props = defineProps<Props>()
 
+const emit = defineEmits<{
+  (e: 'openDetailPage', id: string): void
+}>()
+
 // eslint-disable-next-line unused-imports/no-unused-vars
 const tasks = ref(new Map<string, ITask>(props.tasks))
 const columns = ref<IColumn[]>(props.columns)
-const isNewColumnDialogOpen = ref<boolean>(false)
-const newColumnTitle = ref<string>('')
+const isNewColumnDialogOpen = defineModel<boolean>('is-new-column-dialog')
+const isDetailTaskOpen = defineModel<boolean>('is-detail-task-open')
 
-function handleCreate() {
-  // eslint-disable-next-line no-console
-  console.log('on creating new column >>> ', newColumnTitle.value)
-  isNewColumnDialogOpen.value = false
+function openDetailPage(id: string) {
+  emit('openDetailPage', id)
 }
 
 function handleDrop(payload: {
@@ -85,6 +86,8 @@ const {
             :="tasks.get(taskId)!"
             @dragstart="startDrag($event, taskId, column.id)"
             @dragend="endDrag"
+            @open-detail-dialog="isDetailTaskOpen = true"
+            @open-detail-page="openDetailPage"
           />
         </div>
       </div>
@@ -96,12 +99,6 @@ const {
       </div>
     </div>
   </div>
-
-  <CreateNewColumnDialog
-    v-model:visible="isNewColumnDialogOpen"
-    v-model:title="newColumnTitle"
-    @create="handleCreate"
-  />
 </template>
 
 <style scoped lang="scss">

@@ -13,4 +13,7 @@ export const AppRoutePaths = {
     List: '/boards',
     Info: (id: string) => `/boards/${id}`,
   },
+  Task: {
+    Detail: (id: string) => `/task/${id}`,
+  },
 }

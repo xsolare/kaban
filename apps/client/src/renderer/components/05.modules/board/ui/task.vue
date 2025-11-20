@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/custom-event-name-casing -->
 <script setup lang="ts">
 import type { ITask } from '../models/types'
 import { KitAvatar } from '~/components/01.kit/kit-avatar'
@@ -5,15 +6,25 @@ import { KitAvatar } from '~/components/01.kit/kit-avatar'
 type Props = ITask
 
 const props = defineProps<Props>()
+
+const emit = defineEmits<{
+  (e: 'openDetailDialog'): void
+  (e: 'openDetailPage', id: string): void
+}>()
+
+function openDetailPage(e: Event) {
+  e.stopPropagation()
+  emit('openDetailPage', props.id)
+}
 </script>
 
 <template>
-  <div class="task">
+  <div class="task" @click="emit('openDetailDialog')">
     <div class="task-header">
       <h5 class="task-header-id">
         {{ projectId }}
       </h5>
-      <span class="task-header-title">{{ title }}</span>
+      <span class="task-header-title" @click="openDetailPage">{{ title }}</span>
     </div>
     <!-- <div class="task-body">
     </div> -->
