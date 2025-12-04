@@ -20,11 +20,17 @@ const routes: RouteRecordRaw[] = [
     path: AppRoutePaths.Boards.List,
     name: AppRouteNames.BoardsList,
     component: BoardsList,
+    meta: {
+      layout: 'default',
+    },
   },
   {
     path: AppRoutePaths.Boards.Info(':id'),
     name: AppRouteNames.BoardsInfo,
     component: BoardsInfo,
+    meta: {
+      layout: 'default',
+    },
   },
 ]
 

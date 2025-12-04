@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { IColumn, ITask } from '../models/types'
+import type { IColumn } from '../models/types'
+import type { ITask } from '~/shared/types/models/task'
 import { useDragAndDrop } from '~/shared/composables/use-drag-and-drop'
 import Task from './task.vue'
 

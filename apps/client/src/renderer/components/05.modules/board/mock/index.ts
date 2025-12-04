@@ -1,4 +1,5 @@
-import type { IColumn, ITask } from '../models/types'
+import type { IColumn } from '../models/types'
+import type { ITask } from '~/shared/types/models/task'
 import { v4 as uuidv4 } from 'uuid'
 
 export const TASKS = [
@@ -21,6 +22,16 @@ export const TASKS = [
       color: '#FF0000',
       name: 'Критическая',
     },
+    createdAt: '',
+    updatedAt: '',
+    key: '',
+    labels: [],
+    time: {
+      estimate: 1,
+      spent: 3,
+      type: 'hours',
+    },
+    type: '',
   }],
   ['task2', {
     id: uuidv4(),
@@ -41,6 +52,16 @@ export const TASKS = [
       color: '#00FF00',
       name: 'Обычная',
     },
+    createdAt: '',
+    updatedAt: '',
+    key: '',
+    labels: [],
+    time: {
+      estimate: 1,
+      spent: 3,
+      type: 'hours',
+    },
+    type: '',
   }],
   ['task3', {
     id: uuidv4(),
@@ -61,6 +82,16 @@ export const TASKS = [
       color: '#FFFF00',
       name: 'Важная',
     },
+    createdAt: '',
+    updatedAt: '',
+    key: '',
+    labels: [],
+    time: {
+      estimate: 1,
+      spent: 3,
+      type: 'hours',
+    },
+    type: '',
   }],
 ] satisfies [string, ITask][]
 
