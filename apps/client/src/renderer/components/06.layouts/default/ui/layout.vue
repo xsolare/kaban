@@ -1,8 +1,10 @@
 <script lang="ts" setup>
+import { Header } from '~/components/02.shared/header'
 import { ThemeManager } from '~/components/02.shared/theme-manager'
 </script>
 
 <template>
+  <Header />
   <!-- eslint-disable vue/no-multiple-template-root -->
   <main class="main">
     <div class="main-content">

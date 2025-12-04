@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/custom-event-name-casing -->
 <script setup lang="ts">
-import type { ITask } from '../models/types'
+import type { ITask } from '~/shared/types/models/task'
 import { KitAvatar } from '~/components/01.kit/kit-avatar'
 
 type Props = ITask
