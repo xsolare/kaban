@@ -12,6 +12,7 @@ export interface ITask {
   createdAt: string
   updatedAt: string
   time: ITime
+  description: string
 }
 
 interface IUser {
