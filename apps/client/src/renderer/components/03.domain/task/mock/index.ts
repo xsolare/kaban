@@ -20,19 +20,26 @@ export const TASK = {
   },
   priority: {
     id: uuidv4(),
-    color: '#00FF00',
+    color: '#80ff80',
     name: 'Обычная',
   },
   projectId: 'KBN-2',
   title: 'Моковая задача',
-  createdAt: '',
-  updatedAt: '',
+  createdAt: '2023-10-11T12:30:00',
+  updatedAt: '2023-10-11T12:30:00',
   time: {
     spent: 1,
     estimate: 3,
     type: 'hours',
   },
   key: '',
-  labels: [],
   type: '',
+  labels: [{
+    id: uuidv4(),
+    name: 'task',
+  }, {
+    id: uuidv4(),
+    name: 'mock',
+  }],
+  description: '',
 } satisfies ITask
